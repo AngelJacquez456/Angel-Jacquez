@@ -1,0 +1,83 @@
+// Define la clase Producto
+class Producto {
+    constructor(nombre, precio, medida) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.medida = medida;
+    }
+}
+
+// Clase para gestionar la tienda
+class Tienda {
+    constructor() {
+        this.categorias = ["Lácteos", "Carnes", "Frutas", "Verduras", "Panadería", "Abarrotes", "Botanas", "Bebidas"];
+        this.productos = [
+            new Producto("Leche", 21.00, "Litro"),
+            new Producto("Huevo", 46.00, "Kilo"),
+            new Producto("Frijoles", 20.00, "Kilo"),
+            new Producto("Azúcar", 36.00, "Kilo"),
+            new Producto("Pan dulce", 13.50, "Pieza"),
+            new Producto("Pan bolillo", 5.50, "Pieza"),
+            new Producto("Papas fritas", 20.99, "Bolsa"),
+            new Producto("Refresco", 15.00, "Botella"),
+            new Producto("Pollo", 89.00, "Kilo")
+        ];
+        this.total = 0;
+        this.prodCompra = [];
+    }
+
+    imprimeProd() {
+        this.productos.forEach((producto, index) => {
+            document.write(`${index + 1}.- ${producto.nombre} -- $${producto.precio.toFixed(2)}<br>`);
+        });
+    }
+
+    registroCompra(idProd, cantProd) {
+        const producto = this.productos[idProd];
+        const subtotal = cantProd * producto.precio;
+        this.prodCompra.push({ producto, cantidad: cantProd, subtotal });
+        this.total += subtotal;
+        alert("Producto registrado");
+    }
+
+    imprimeNota() {
+        document.write("<h2>Nota de compra</h2>");
+        document.write("<table border='1'><tr>" +
+            "<th>Producto</th>" +
+            "<th>Cantidad</th>" +
+            "<th>Precio unitario</th>" +
+            "<th>Subtotal</th>" +
+            "</tr>");
+        this.prodCompra.forEach(compra => {
+            document.write(`<tr>
+                <td>${compra.producto.nombre}</td>
+                <td>${compra.cantidad}</td>
+                <td>$${compra.producto.precio.toFixed(2)}</td>
+                <td>$${compra.subtotal.toFixed(2)}</td>
+            </tr>`);
+        });
+        document.write("</table>");
+        document.write(`<h2>Total de la compra: $${this.total.toFixed(2)}</h2>`);
+    }
+
+    registroProd() {
+        // Formulario para solicitar los productos de la compra
+        document.write("<h2>Compra de productos</h2>" +
+            "<label for='producto'>Selecciona el producto: </label>" +
+            "<select name='producto' id='producto'>");
+        this.productos.forEach((producto, index) => {
+            document.write(`<option value='${index}'>${producto.nombre}</option>`);
+        });
+        document.write("</select>");
+        document.write("<br><label for='cantidad'>Cantidad: </label>" +
+            "<input type='number' name='cantidad' id='cantidad'>" +
+            "<br><input type='button' value='Agregar a la compra' onclick='tienda.registroCompra(document.getElementById(\"producto\").value, document.getElementById(\"cantidad\").value)'>");
+        document.write("<hr>");
+    }
+}
+
+// Crear instancia de la tienda
+const tienda = new Tienda();
+tienda.imprimeProd();
+tienda.registroProd();
+document.write("<br><input type='button' value='Terminar compra' onclick='tienda.imprimeNota();'>");
