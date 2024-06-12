@@ -1,0 +1,15 @@
+class CompetenciaDeConjunto extends Competencia {
+    private String nombreEquipo;
+
+    public CompetenciaDeConjunto(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
+    }
+
+    public String getNombreEquipo() {
+        return nombreEquipo;
+    }
+
+    public void setNombreEquipo(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
+    }
+}

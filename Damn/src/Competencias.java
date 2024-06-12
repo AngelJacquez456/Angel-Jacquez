@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 class Competencia {
     private String sede;
     private String prueba;
@@ -16,7 +15,6 @@ class Competencia {
     private String tercerLugar;
     private String observaciones;
 
- 
     public String getSede() {
         return sede;
     }
@@ -122,7 +120,6 @@ class Competencia {
     }
 }
 
-
 class Atletismo extends Competencia {
     private String juezArbitro;
     private String juezArbitroSalida;
@@ -207,7 +204,6 @@ class Atletismo extends Competencia {
     }
 }
 
-
 class Natacion extends Competencia {
     private String oficialMayor;
     private String juezSalida;
@@ -218,7 +214,6 @@ class Natacion extends Competencia {
     private String tiempo2doLugar;
     private String tiempo3erLugar;
 
-   
     public String getOficialMayor() {
         return oficialMayor;
     }
@@ -281,5 +276,37 @@ class Natacion extends Competencia {
 
     public void setTiempo3erLugar(String tiempo3erLugar) {
         this.tiempo3erLugar = tiempo3erLugar;
+    }
+}
+
+class CompetenciaIndividual extends Competencia {
+    private String nombreAtleta;
+
+    public CompetenciaIndividual(String nombreAtleta) {
+        this.nombreAtleta = nombreAtleta;
+    }
+
+    public String getNombreAtleta() {
+        return nombreAtleta;
+    }
+
+    public void setNombreAtleta(String nombreAtleta) {
+        this.nombreAtleta = nombreAtleta;
+    }
+}
+
+class CompetenciaDeConjunto extends Competencia {
+    private String nombreEquipo;
+
+    public CompetenciaDeConjunto(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
+    }
+
+    public String getNombreEquipo() {
+        return nombreEquipo;
+    }
+
+    public void setNombreEquipo(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
     }
 }
